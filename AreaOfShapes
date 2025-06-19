@@ -1,0 +1,32 @@
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+import java.util.Scanner;
+
+class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter A:");
+        int a = scanner.nextInt();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter B:");
+        int b = scanner.nextInt();
+        System.out.println("Area of Rectangle: " + areaOfRectangle(a,b));
+        System.out.println("Area of Circle: " + areaOfCircle(a));
+        System.out.println("Area of Triangle: " + areaOfTriangle(a,b));
+        
+    }
+    public static double areaOfRectangle(double a, double b){
+        //double area = a*b;
+        return a * b;
+        //System.out.println(area);
+    }
+    public static double areaOfTriangle(double a, double b){
+        //double area = 0.5 * a * b;
+        return 0.5 * a * b;
+    }
+    public static double areaOfCircle(double a){
+       //double area = Math.PI * a * a;
+       return Math.PI * a * a;
+    }
+}
+
