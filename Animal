@@ -1,0 +1,38 @@
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+import java.util.Scanner;
+class Main {
+    public static void main(String[] args) {
+        
+        Animal tiger = new Animal("Orange");
+        tiger.legs = 5;
+        System.out.println("Number of Legs: " + tiger.legs);
+        tiger.wings = 0;
+        System.out.println("Number of Wings:" + tiger.wings);
+        tiger.printColour();
+        //System.out.println("Try programiz.pro");
+    }
+}
+
+class Animal {
+    int legs;
+    int wings;
+    String colour;
+    int eyes;
+    int arms;
+    // System.out.println("h");
+    public Animal(String colour){
+        this.colour = colour;
+        System.out.println("Colour of Animal: " + colour);
+    }
+    
+    
+    public void printColour(){
+        System.out.println(" Colour is..." + colour);
+    }
+    
+    
+}
+class Bird extends Animal{
+    
+}
