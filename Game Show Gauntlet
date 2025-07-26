@@ -1,0 +1,167 @@
+public class Contestant {
+    private String name;
+    private int score;
+    public Contestant(String name) {
+        this.name = name;
+    }
+    
+    public String getName() {
+        return name;
+    }
+    public int getScore() {
+        return score;
+    }
+    public void addPoints(int pointsToAdd) {
+        
+        score += pointsToAdd;
+
+        if (score < 0) {
+            score = 0;
+        }
+    }
+
+    public void displayInfo(){
+        System.out.println(getName() + " - Score: " + getScore());        
+    }
+
+}
+
+
+import java.util.ArrayList;
+
+public class GameShow {
+    private ArrayList<Contestant> contestants;
+    private ArrayList<Question> questions;
+
+    public GameShow() {
+        this.contestants = new ArrayList<>();
+        this.questions = new ArrayList<>();
+    }
+
+    public GameShow(ArrayList<Contestant> contestants, ArrayList<Question> questions) {
+        this.contestants = contestants;
+        this.questions = questions;
+    }
+
+    // ✅ Fixed method signature and body
+    public void addContestant(Contestant contestant) {
+        if (contestant != null) {
+            contestants.add(contestant);
+        }
+    }
+
+    public void addQuestion(Question question) {
+        if (question != null) {
+            questions.add(question);
+        }
+    }
+
+    public void startShow() {
+        System.out.println("🎉 Welcome to the Ultimate Game Show Challenge! 🎉\n");
+
+        System.out.println("📢 Meet the contestants:");
+        for (Contestant contestant : contestants) {
+            contestant.displayInfo(); 
+        }
+
+        System.out.println("\n🧠 Let the questioning begin!\n");
+
+        int rounds = Math.min(contestants.size(), questions.size());
+        for (int i = 0; i < rounds; i++) {
+            Contestant currentContestant = contestants.get(i);
+            Question currentQuestion = questions.get(i);
+
+            System.out.println("👉 Question for " + currentContestant.getName() + ":");
+            currentQuestion.displayQuestion();
+
+            currentContestant.addPoints(10);
+        }
+
+        System.out.println("\n🏁 Game Over! Let's see how everyone did:\n");
+
+        for (Contestant contestant : contestants) {
+            System.out.println(contestant.getName() + " scored " + contestant.getScore() + " points.");
+        }
+
+        System.out.println("\n🎊 Thanks for watching the show! 🎊");
+    }
+}
+
+
+
+public class Main {
+  public static void main(String... args) {
+      
+      Contestant bob = new Contestant("Bob");
+      Contestant alice = new Contestant("Alice");
+      Contestant jerry = new Contestant("Jerry");
+      Contestant alexa = new Contestant("Alexa");
+      Contestant john = new Contestant("John Adams");
+
+      
+      Question q1 = new Question("What is the capital of France?", "Paris", 5);
+      Question q2 = new Question("Which planet is known as the Red Planet?", "Mars", 5);
+      Question q3 = new Question("Who wrote the play 'Romeo and Juliet'?", "William Shakespeare", 10);
+      Question q4 = new Question("What is the largest mammal in the world?", "Blue Whale", 5);
+      Question q5 = new Question("In which year did the Titanic sink?", "1912", 10);
+      
+      
+      GameShow javashow = new GameShow();  
+      javashow.addContestant(bob);
+      javashow.addContestant(alice);
+      javashow.addContestant(jerry);
+      javashow.addContestant(alexa);
+      javashow.addContestant(john);
+  
+      javashow.addQuestion(q1);
+      javashow.addQuestion(q2);
+      javashow.addQuestion(q3);
+      javashow.addQuestion(q4);
+      javashow.addQuestion(q5);
+               
+
+      
+      
+
+      
+      javashow.startShow();
+  }
+}
+
+
+
+
+public class Question {
+    private String questionText;
+    private String correctAnswer;
+    private int pointValue;
+
+    public Question(String questionText, String correctAnswer, int pointValue){
+        this.questionText=questionText;
+        this.correctAnswer=correctAnswer;
+        this.pointValue=pointValue;
+    }
+    public String getQuestionText() {
+        return questionText;
+    }
+    public String getCorrectAnswer() {
+        return correctAnswer;
+    }
+    public int getPointValue() {
+        return pointValue;
+    }
+    public void displayQuestion () {
+        System.out.println(questionText);
+    
+    }
+    public boolean checkAnswer(String userAnswer) {
+         
+        if (userAnswer.equalsIgnoreCase(correctAnswer)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
+
+
